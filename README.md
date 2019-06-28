@@ -65,9 +65,16 @@ updated. If you customize any of the "scaffolding" files (commonly .htaccess),
 you may need to merge conflicts if any of your modified files are updated in a 
 new release of Drupal core.
 
+This project comes with a fixed Drupal version, which you will either have to
+bump up yourself or make less restrictive, if you do not want to pin down an
+exact Drupal version. To relieve the fixed version requirement, you can
+`composer require webflo/drupal-core-strict:^8.7`
+
 Follow the steps below to update your core files.
 
-1. Run `composer update drupal/core webflo/drupal-core-require-dev webflo/drupal-core-strict composer/installers "symfony/*" --with-dependencies` to update Drupal Core and its dependencies.
+1. Set the Drupal version you want to install, if it is fixed, e.g. `composer require webflo/drupal-core-strict:8.7.3`.
+   If you don't use a fixed version, you can skip this step.
+1. Run `composer update webflo/drupal-core-strict webflo/drupal-core-require-dev composer/installers "symfony/*" --with-dependencies` to update Drupal Core and its dependencies.
 1. Run `git diff` to determine if any of the scaffolding files have changed. 
    Review the files for any changes and restore any customizations to 
   `.htaccess` or `robots.txt`.
