@@ -1,13 +1,18 @@
 # Composer template for Drupal projects
 
-[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
-
 This project template provides a starter kit for managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
 If you want to know how to use it as replacement for
 [Drush Make](https://github.com/drush-ops/drush/blob/8.x/docs/make.md) visit
 the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
+
+This package is based on [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project) with
+following changes and additions:
+
+- [webflo/drupal-core-strict](https://github.com/webflo/drupal-core-strict) is used to fix the exact versions of
+  Drupal core dependencies
+- Alongside `/custom/`, it also has `/contrib/` folders for themes, modules and profiles
 
 ## Usage
 
@@ -20,7 +25,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project drupal-composer/drupal-project:8.x-dev some-dir --no-interaction
+composer create-project scnx/drupal-project:8.x-dev some-dir --no-interaction
 ```
 
 With `composer require ...` you can download new dependencies to your 
@@ -62,7 +67,7 @@ new release of Drupal core.
 
 Follow the steps below to update your core files.
 
-1. Run `composer update drupal/core webflo/drupal-core-require-dev "symfony/*" --with-dependencies` to update Drupal Core and its dependencies.
+1. Run `composer update drupal/core webflo/drupal-core-require-dev webflo/drupal-core-strict composer/installers "symfony/*" --with-dependencies` to update Drupal Core and its dependencies.
 1. Run `git diff` to determine if any of the scaffolding files have changed. 
    Review the files for any changes and restore any customizations to 
   `.htaccess` or `robots.txt`.
